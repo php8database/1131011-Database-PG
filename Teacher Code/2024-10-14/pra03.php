@@ -93,8 +93,17 @@ for($i=4;$i>=0;$i--){
 ?>
 <h2>菱形</h2>
  <?php 
-for($i=0;$i<21;$i++){
-    if($i>10){
+$size=11;
+if($size >=3){
+    if($size%2==0){
+        $size++;
+    }
+}else{
+    echo "數字太小,無法畫出菱形<br>";
+}
+
+for($i=0;$i<$size;$i++){
+    if($i>floor($size/2)){
         /* $t=$i-4;
         $i-4     => 1,2,3,4
         2*($i-4) => 2,4,6,8
@@ -103,19 +112,18 @@ for($i=0;$i<21;$i++){
         2*($i-(2$i-8))+1
         2*(8-$i)+1
         17-2$i */
-
-        for($k=0;$k<$i-10;$k++){
+        for($k=0;$k<$i-floor($size/2);$k++){
             echo "&nbsp;";
         }
     
-        for($j=0;$j<2*($i-(2*($i-10)))+1;$j++){
+        for($j=0;$j<2*($i-(2*($i-floor($size/2))))+1;$j++){
             echo "*";
         }
         echo "<br>";
 
     }else{
 
-        for($k=0;$k<10-$i;$k++){
+        for($k=0;$k<floor($size/2)-$i;$k++){
             echo "&nbsp;";
         }
     
@@ -129,12 +137,12 @@ for($i=0;$i<21;$i++){
 ?>
 <h2>菱形</h2>
  <?php 
-for($i=0;$i<21;$i++){
-    if($i>10){
-        $k1=$i-10;
-        $j1=2*($i-(2*($i-10)))+1;
+for($i=0;$i<$size;$i++){
+    if($i>floor($size/2)){
+        $k1=$i-(floor($size/2));
+        $j1=2*($i-(2*($i-(floor($size/2)))))+1;
     }else{
-        $k1=10-$i;
+        $k1=(floor($size/2))-$i;
         $j1=(2*$i+1);
     }
 
@@ -149,18 +157,45 @@ for($i=0;$i<21;$i++){
 
 }
 ?>
-
 <h2>菱形對角線</h2>
+<?php 
+for($i=0;$i<$size;$i++){
+    if($i>(floor($size/2))){
+        $k1=$i-(floor($size/2));
+        $j1=2*($i-(2*($i-(floor($size/2)))))+1;
+    }else{
+        $k1=(floor($size/2))-$i;
+        $j1=(2*$i+1);
+    }
+
+    for($k=0;$k<$k1;$k++){
+        echo "&nbsp;";
+    }
+
+    for($j=0;$j<$j1;$j++){
+        if($j==0 || $j==$j1-1 || $i==(floor($size/2)) || $j==floor(($j1-1)/2) ){
+            echo "*";
+        }else{
+            echo "&nbsp;";
+        }
+
+    }
+    echo "<br>";
+
+}
+?>
 
 
 
 <h2>矩形練習</h2>
 <?php 
-for($i=0;$i<5;$i++){
-    for($j=0;$j<5;$j++){
-        if($i==0 || $i==4){
+$width=7;
+
+for($i=0;$i<$width;$i++){
+    for($j=0;$j<$width;$j++){
+        if($i==0 || $i==($width-1)){
             echo "*";
-        }else if($j==0 ||$j==4){
+        }else if($j==0 ||$j==$width-1){
             echo "*";
         }else{
             echo "&nbsp;";
@@ -169,17 +204,18 @@ for($i=0;$i<5;$i++){
     echo "<br>";
 }
 
-?>
 
+
+?>
 <h2>矩形含對角線練習</h2>
 <?php 
-for($i=0;$i<5;$i++){
-    for($j=0;$j<5;$j++){
-        if($i==0 || $i==4){
+for($i=0;$i<$width;$i++){
+    for($j=0;$j<$width;$j++){
+        if($i==0 || $i==($width-1)){
             echo "*";
-        }else if($j==0 ||$j==4){
+        }else if($j==0 ||$j==($width-1)){
             echo "*";
-        }else if($i==$j || $j==(4-$i)){
+        }else if($i==$j || $j==($width-1-$i)){
             echo "*";
 
         }else{
@@ -191,13 +227,13 @@ for($i=0;$i<5;$i++){
 
 ?>
 <?php 
-for($i=0;$i<6;$i++){
-    for($j=0;$j<6;$j++){
-        if($i==0 || $i==5){
+for($i=0;$i<$width;$i++){
+    for($j=0;$j<$width;$j++){
+        if($i==0 || $i==($width-1)){
             echo "*";
-        }else if($j==0 ||$j==5){
+        }else if($j==0 ||$j==($width-1)){
             echo "*";
-        }else if($i==$j || $j==(5-$i)){
+        }else if($i==$j || $j==($width-1-$i)){
             echo "*";
 
         }else{
