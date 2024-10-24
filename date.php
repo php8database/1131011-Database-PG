@@ -35,7 +35,7 @@ echo $s*29; */
 <h1>計算距離自己下一次生日還有幾天</h1>
 <?php 
 $start =date("Y-m-d");
-$end="2025-10-07";
+$end="2025-05-12";
 $startTime=strtotime($start);
 echo '今日日期:'.$startTime;
 echo "<br>";
@@ -110,8 +110,61 @@ for($i=0;$i<5;$i++){
 }
 
 ?>
+<h1>線上月曆製作</h1>
+
+<ul>
+    <li>以表格方式呈現整個月份的日期</li>
+    <li>可以在特殊日期中顯示資訊(假日或紀念日)</li>
+    <li>嘗試以block box或flex box的方式製作月曆</li>
+</ul>
+<style>
+    table{
+        border-collapse:collapse;
+
+    }
+    td{
+        padding:5px 10px;
+        text-align: center;
+        border:1px solid #999;
+    }
+</style>
+<h3><?php echo date("m月");?></h3>
+<table>
+<tr>
+    <td></td>
+    <td>日</td>
+    <td>一</td>
+    <td>二</td>
+    <td>三</td>
+    <td>四</td>
+    <td>五</td>
+    <td>六</td>
+</tr>
+<?php
+$d=strtotime("2024-6");
+for($i=0;$i<6;$i++){
+    echo "<tr>";
+    echo "<td>";
+    echo $i+1;
+    echo "</td>";
+    for($j=0;$j<7;$j++){
+        echo "<td>";
+        $dayNum=$i*7 + $j +1;
+        if($dayNum<=date('t')){
+            echo $dayNum;
+        }
+        echo "</td>";
+    }
+
+    echo "</tr>";
 
 
+}
+
+
+
+?>
+</table>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
